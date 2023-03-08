@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
-    console.log('validate token');
+    const headerToken = req.headers['authorization']
+    console.log(headerToken);
     next()
 }
 
