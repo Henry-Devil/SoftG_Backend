@@ -36,13 +36,28 @@ export const newUser = async (req: Request, res: Response) =>{
     
 }
 
-export const loginUser = (req: Request, res: Response) =>{
+export const loginUser = async (req: Request, res: Response) =>{
 
-    const {body} = req;
+    const {username, password} = req.body;
 
-    res.json({
-        msg: "login User",
-        body
+    //Validamos si el usuario existe en la base de datos
+    const user = await User.findOne({where: {username: username}});
+
+    if(!user){
+        return res.status(400).json({
+            msg: `No existe un usuario con el nombre ${username} en la base de datos`
+        })
+    }
+
+    //Validamos password
+   const passwordValid = await bcrypt.compare(password, user.password)
+   
+   if(!passwordValid){
+    return res.status(400).json({
+        msg: `Password incorrecta`
     })
+   }
+
+    //Generamos token 
     
 }
