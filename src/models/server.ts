@@ -9,6 +9,7 @@ import { User } from './user';
 import { Vehicle } from './vehicle';
 import { Route } from './route';
 import { Schedule } from './schedule';
+import connection from '../db/connectionbd';
 
 
 class Server {
@@ -22,6 +23,7 @@ class Server {
         this.midlwares();
         this.routes();
         this.dbConect()
+        this.conectarDB()
     }
 
     listen(){
@@ -40,7 +42,17 @@ class Server {
     }
 
     midlwares(){
+
+        //parseo del body
         this.app.use(express.json());
+    }
+
+    conectarDB(){
+        connection.connect((err) => {
+            if (err) throw err;
+            console.log('Conectado a la base de datos');
+            
+        })
     }
 
     async dbConect(){
