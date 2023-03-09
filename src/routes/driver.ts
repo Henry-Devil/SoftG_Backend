@@ -8,6 +8,6 @@ router.get('/', validateToken, getDrivers);
 router.get('/:id', getDriver);
 router.delete('/:id', deleteDriver);
 router.post('/', postDriver);
-router.put('/', putDriver);
+router.put('/:id', putDriver);
 
 export default router;
