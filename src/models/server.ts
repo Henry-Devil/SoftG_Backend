@@ -10,6 +10,7 @@ import { Vehicle } from './vehicle';
 import { Route } from './route';
 import { Schedule } from './schedule';
 import connection from '../db/connectionbd';
+import cors from 'cors';
 
 
 class Server {
@@ -45,6 +46,8 @@ class Server {
 
         //parseo del body
         this.app.use(express.json());
+        //cors
+        this.app.use(cors());
     }
 
     conectarDB(){
