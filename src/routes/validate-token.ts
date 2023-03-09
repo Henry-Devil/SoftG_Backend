@@ -6,13 +6,17 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
     console.log(headerToken);
 
     if (headerToken != undefined && headerToken.startsWith('Bearer ')){
-        //Tiene token
-        const bearerToken = headerToken.slice(7);
-        console.log(bearerToken);
-        
-        // jwt.verify()
+    //Tiene token
+        try {
+            const bearerToken = headerToken.slice(7);
+            jwt.verify(bearerToken, process.env.SECRET_KEY || "pepito123");
+            next()
+        } catch (error) {
+            res.status(401).json({
+                msg: "token no valido"
+            })
+        }
 
-        next()
     } else {
         res.status(401).json({
             msg: "Acceso denegado"
