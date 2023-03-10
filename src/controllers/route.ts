@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { Route } from '../models/route';
-
+// obtener todas las rutas
 export const getRoutes = async (req: Request, res: Response) => {
     const listRoute = await Route.findAll();
 
@@ -48,7 +48,7 @@ export const postRoute = async (req: Request, res: Response) => {
       res.status(500).json({ msg: 'Ocurrió un error al crear la ruta' });
     }
   };
-
+//Actualizar ruta
   export const putRoute = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { body } = req;
