@@ -1,9 +1,8 @@
-# SoftG_Backend
+# Prueba desarrollador
 Creación del backend con Framework Express
 
-
 *Instalación de paquetes y configuraciónes iniciales.*
-
+----------------------------------------------------------
 Se instalaron dependencias express, bcrypt, cors, dotenv, jsonwebtoken, sequelize, mysql2. 
 
 Dependencia de desarrollo: Typescript, nodemon, 
@@ -14,7 +13,7 @@ instalación del package
 @types/jsonwebtoken
 
 *Scripts: *
-
+-------------------
 Agrego en package.json: 
 
 "dev": "nodemon dist/index.js" (npm run dev)
@@ -22,13 +21,13 @@ Agrego en package.json:
 
 
 *Estructura de carpetas*
-
+---------------------------
 Creación de carpetas: Controllers, db, models, y routes.
 
 models: creación de archivo server.ts. Se creó para correr dentro el puerto 3001
 
 *Configuración de rutas*
-
+-------------------------
 (GET)
 http://localhost:3001/api/drivers
 http://localhost:3001/api/vehicles
