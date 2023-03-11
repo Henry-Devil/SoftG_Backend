@@ -2,7 +2,7 @@
 Creación del backend con Framework Express
 
 
-Instalación de paquetes y configuraciónes iniciales.
+*Instalación de paquetes y configuraciónes iniciales.*
 
 Se instalaron dependencias express, bcrypt, cors, dotenv, jsonwebtoken, sequelize, mysql2. 
 
@@ -13,7 +13,7 @@ instalación del package
 @types/bcrypt
 @types/jsonwebtoken
 
-Scripts: 
+*Scripts: *
 
 Agrego en package.json: 
 
@@ -21,13 +21,13 @@ Agrego en package.json:
 "typescript": "tsc --watch" (npm run typescript)
 
 
-Estructura de carpetas
+*Estructura de carpetas*
 
 Creación de carpetas: Controllers, db, models, y routes.
 
 models: creación de archivo server.ts. Se creó para correr dentro el puerto 3001
 
-Configuración de rutas
+*Configuración de rutas*
 
 (GET)
 http://localhost:3001/api/drivers
@@ -43,8 +43,10 @@ http://localhost:3001/api/login (Login usuario)
 Se crearon todas la tablas requeridas con sus respectivas conexiones
 Dentro de controller, models, routes
 
-Se hizo creación de modelos y obtención de Tabla Drivers desde ORM de sequelize. 
+Se hizo creación de modelos y obtención de tablas desde ORM de sequelize. 
 
+*Validación login*
+--------------------
 Creación de usuarios en bd.
 User: solo acepta valores unicos
 
@@ -56,6 +58,8 @@ Verificación que no haya usuarios duplicados
 
 Validación de usuario en la base de datos.
 validación de password 
+*JWT*
+----------
 JWT - Creación del token
 Protección de rutas: Se hizo protección de rutas y se implementó jwt para generar token y que tengan su verficiación si es valido o no.
 Se creó crud con con ayuda de ORM de Sequelize y se crearon sus respectivas rutas.
