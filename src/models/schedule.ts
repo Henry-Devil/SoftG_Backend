@@ -9,7 +9,6 @@ export const Schedule = sequelize.define('schedule', {
     },
     //route_id
 
-
     week_num: {
         type:DataTypes.INTEGER,
     },

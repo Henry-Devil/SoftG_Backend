@@ -2,22 +2,23 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
-    const headerToken = req.headers['authorization']
-    console.log(headerToken);
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ msg: "Acceso denegado" });
+  }
 
-    if (headerToken != undefined && headerToken.startsWith('Bearer ')){
-        //Tiene token
-        const bearerToken = headerToken.slice(7);
-        console.log(bearerToken);
-        
-        // jwt.verify()
+  const token = authHeader.slice(7);
+  if (!token) {
+    return res.status(401).json({ msg: "Acceso denegado" });
+  }
 
-        next()
-    } else {
-        res.status(401).json({
-            msg: "Acceso denegado"
-        })
-    }
-}
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET_KEY || "default_secret_key");
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.status(401).json({ msg: "Token no válido" });
+  }
+};
 
 export default validateToken;

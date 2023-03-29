@@ -59,10 +59,22 @@ export const loginUser = async (req: Request, res: Response) =>{
     })
    }
 
+
+   if (!process.env.SECRET_KEY) {
+    console.error("La variable de entorno SECRET_KEY no está definida");
+    process.exit(1);
+  }
+
     //Generamos token 
     const token = jwt.sign({
         username: username
-    }, process.env.SECRET_KEY || 'pepito123')
+    }, process.env.SECRET_KEY,{
+        expiresIn: '1d'
+    })
+
+    // Agregamos el token al encabezado Authorization
+    res.set('Authorization', `Bearer ${token}`)
 
     res.json({token})
+    
 }
